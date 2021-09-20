@@ -67,23 +67,27 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
             </form>
             <ul class="navbar-nav ml-auto">
+                <% if (user) { %>
                 <li class="nav-item mr-3 mt-2 ">
                     <input type="range" value="0" min="0" max="100" step="1">
                 </li>
                 <li class="nav-item mr-3 mt-1 ">
                     <input name="date" type="date" value="2021-07-19">
                 </li>
-                <li class="nav-item">
-                    <a href="/login" class="nav-link">登录</a>
-                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
-                        admin
+                        <%=user.username%>
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="/user/logout">退出</a>
                     </div>
                 </li>
+                <% } else { %>
+                <li class="nav-item">
+                    <a href="/login" class="nav-link">登录</a>
+                </li>
+                <% } %>
+
             </ul>
         </div>
     </nav>
