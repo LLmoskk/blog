@@ -12,9 +12,9 @@ articleApp.get('/list/:id', [article.getListByCategoryID, category.getCategory, 
 })
 
 
-articleApp.get('/:id', [category.getCategory, article.getArticleID], (req, res) => {
-    let { categories, article } = req
-    res.render('article', { categories: categories, article: article })
+articleApp.get('/:id', [category.getCategory, article.getArticleID, article.getPrevArticle, article.getNextArticle], (req, res) => {
+    let { categories, article, prev, next } = req
+    res.render('article', { categories: categories, article: article, prev: prev, next: next })
 })
 
 module.exports = articleApp;

@@ -5,7 +5,8 @@
         <% articles.forEach(article => { %>
         <div class="col my-3">
             <div class="card h-100 shadow-lg p-3 mb-2 bg-white rounded">
-                <img src="holder.js/100px150" class="card-img-top" alt="...">
+                <img src="holder.js/100px150?text=<%= article.title %>&bg=39DBAC&fg=ffffff&size=20" class="card-img-top"
+                    alt="...">
                 <div class="card-body">
                     <h5 class="card-title"><%= article.title %></h5>
                     <p class="card-text"><small class="text-muted"><%= article.time.toLocaleString() %> </small></p>
