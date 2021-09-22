@@ -33,7 +33,29 @@
             }
         });
 
+        
+      
     })
+</script>
+
+<script>
+        const newsblogs = document.querySelectorAll('.newsblog')
+        const html = document.documentElement
+        document.addEventListener('scroll',(e)=>{
+            let scrolled = html.scrollTop / (html.scrollHeight - html.clientHeight)
+            // console.log(scrolled);
+            let totol = 1 / newsblogs.length;
+            for(let [index,newsblog] of newsblogs.entries()){
+                    let start = totol * index;
+                    let end = totol * (index + 1)
+                    console.log(`index:${index},start:${start},end:${end}`);
+                    let progress = (scrolled - start) / (end - start)
+                    if(progress >= 1) progress = 1
+                    if(progress <= 0) progress = 0
+    
+                    newsblog.style.setProperty('--progress',progress)
+            }
+        })
 </script>
 
 </body>

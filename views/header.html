@@ -1,99 +1,144 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <title>首页</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
     <style>
-        .bg-light nav:nth-child(1) {
-            background: linear-gradient(to right, #FFDC60, #ffff1cd0);
-        }
+      .bg-light nav:nth-child(1) {
+        background: linear-gradient(to right, #ffdc60, #ffff1cd0);
+      }
 
-        .navbar-dark .navbar-nav .nav-link {
-            color: rgba(0, 0, 0, 0.8);
-        }
+      .navbar-dark .navbar-nav .nav-link {
+        color: rgba(0, 0, 0, 0.8);
+      }
 
-        footer {
-            background: linear-gradient(to right, #ffff1cd0, #FFDC60);
-        }
+      footer {
+        background: linear-gradient(to right, #ffff1cd0, #ffdc60);
+      }
 
-        .bg-light {
-            background: linear-gradient(to bottom right, #00c3ff, #ffff1c) no-repeat;
-        }
+      .bg-light {
+        background: linear-gradient(to bottom right, #00c3ff, #ffff1c) no-repeat;
+      }
 
-        .card {
-            border-radius: 20px !important;
-        }
+      .card {
+        border-radius: 20px !important;
+      }
 
-        .card-deck .card {
-            border-radius: 20px !important;
-        }
+      .card-deck .card {
+        border-radius: 20px !important;
+      }
 
-        /* 把没铺满的页面铺满 */
-        .listcontent {
-            height:0px;
-            padding-bottom:100%
-        }
+      /* 把没铺满的页面铺满 */
+      .listcontent {
+        height: 0px;
+        padding-bottom: 100%;
+      }
+
+      .newsblog {
+        /* transition: 0.25s all ease-in-out; */
+        --progress: 0;
+        transform: scale(calc(1.8 - (0.8 * var(--progress))))
+          translateY(calc(-60px * (1 - var(--progress))));
+        opacity: var(--progress);
+      }
+
+      .newsblog:hover {
+        transform: scale(1.2);
+      }
+
+      .logo:hover {
+        transform: rotateZ(360deg);
+        transition: all 1s;
+      }
     </style>
+  </head>
 
-</head>
+  <body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="#">
+        <img src="/img/logo.png" width="30" height="30" alt="" class="logo" />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-<body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-        <a class="navbar-brand" href="#">
-            <img src="/img/logo.png" width="30" height="30" alt="">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">首页</a>
-                </li>
-                <% categories.forEach(category => { %>
-                <li class="nav-item">
-                    <a class="nav-link" href="/article/list/<%=category.id%>"><%= category.name %> </a>
-                </li>
-                <% }) %>
-
-            </ul>
-            <form class="form-inline my-2 my-lg-0 ml-5" method="get" action='/search'>
-                <input class="form-control mr-sm-2" name="keyword" type="search" placeholder="请输入关键词..." list="records">
-                <datalist id="records">
-                    <option value="java"></option>
-                    <option value="node"></option>
-                    <option value="bootstrap"></option>
-                </datalist>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
-            </form>
-            <ul class="navbar-nav ml-auto">
-                <% if (user) { %>
-                <li class="nav-item mr-3 mt-2 ">
-                    <input type="range" value="0" min="0" max="100" step="1">
-                </li>
-                <li class="nav-item mr-3 mt-1 ">
-                    <input name="date" type="date" value="2021-07-19">
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
-                        <%=user.username%>
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/user/logout">退出</a>
-                    </div>
-                </li>
-                <% } else { %>
-                <li class="nav-item">
-                    <a href="/login" class="nav-link">登录</a>
-                </li>
-                <% } %>
-
-            </ul>
-        </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+          <% categories.forEach(category => { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/article/list/<%=category.id%>"
+              ><%= category.name %>
+            </a>
+          </li>
+          <% }) %>
+        </ul>
+        <form
+          class="form-inline my-2 my-lg-0 ml-5"
+          method="get"
+          action="/search"
+        >
+          <input
+            class="form-control mr-sm-2"
+            name="keyword"
+            type="search"
+            placeholder="请输入关键词..."
+            list="records"
+          />
+          <datalist id="records">
+            <option value="java"></option>
+            <option value="node"></option>
+            <option value="bootstrap"></option>
+          </datalist>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            搜索
+          </button>
+        </form>
+        <ul class="navbar-nav ml-auto">
+          <% if (user) { %>
+          <li class="nav-item mr-3 mt-2">
+            <input type="range" value="0" min="0" max="100" step="1" />
+          </li>
+          <li class="nav-item mr-3 mt-1">
+            <input name="date" type="date" value="2021-07-19" />
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              data-toggle="dropdown"
+            >
+              <%=user.username%>
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="/user/logout">退出</a>
+            </div>
+          </li>
+          <% } else { %>
+          <li class="nav-item">
+            <a href="/login" class="nav-link">登录</a>
+          </li>
+          <% } %>
+        </ul>
+      </div>
     </nav>
+  </body>
+</html>

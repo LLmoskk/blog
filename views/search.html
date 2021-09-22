@@ -2,11 +2,11 @@
 
 <div class="container mt-5 listcontent">
     <h2 class="mb-4">搜索结果（搜索词：<%=keyword%> ）</h2>
-    <div class="row row-cols-4">
+    <div class="row row-cols-4 ">
         <% articles.forEach(article => { %>
-        <div class="col my-3">
+        <div class="col my-3 newsblog">
             <div class="card h-100">
-                <img src="holder.js/100px150" class="card-img-top" alt="...">
+                <img src="holder.js/100px150?text=<%= article.title %>&bg=39DBAC&fg=ffffff&size=20  " class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title"><%= article.title %></h5>
                     <p class="card-text"><small class="text-muted"><%= article.time.toLocaleString() %> </small></p>
