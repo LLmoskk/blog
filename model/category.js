@@ -1,5 +1,6 @@
 module.exports = class Category extends require('./model.js') {
 
+    // 导航栏文章类别
     static getCategory() {
         return new Promise((resolve, reject) => {
             let sql = 'SELECT id,`name` FROM category ORDER BY `index` DESC'

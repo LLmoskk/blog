@@ -1,6 +1,6 @@
 module.exports = class Article extends require('./model.js') {
 
-    // 热门推荐
+    // 热门推荐部分
     static getHot(num) {
         return new Promise((resolve, reject) => {
             let sql = 'SELECT id,title,content,`time` FROM article WHERE hot = 1 LIMIT ?'
@@ -13,7 +13,7 @@ module.exports = class Article extends require('./model.js') {
         })
     }
 
-    // 最新博文
+    // 最新博文部分
     static getList() {
         return new Promise((resolve, reject) => {
             let sql = 'SELECT id,title,content,`time` FROM article ORDER BY TIME DESC'

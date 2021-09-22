@@ -2,6 +2,8 @@ const Category = require('../model/category.js')
 
 
 module.exports = {
+
+    // 导航栏文章类别
     getCategory: (req, res, next) => {
         Category.getCategory().then(results => {
             req.categories = results
@@ -11,6 +13,7 @@ module.exports = {
         })
     },
 
+    // 通过类别获取名称
     getNameById: (req, res, next) => {
         let id = req.params.id;
         Category.getNameById(id).then(results => {
