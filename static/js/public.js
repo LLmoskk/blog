@@ -44,4 +44,8 @@ document.addEventListener('scroll', (e) => {
 
         newsblog.style.setProperty('--progress', progress)
     }
+<<<<<<< HEAD
 })
+=======
+})
+>>>>>>> 42bc39ef03dc705c93d9fb11e1bece34ff414c94
